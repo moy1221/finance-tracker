@@ -1,6 +1,8 @@
 <% if params[:action] == 'search' %>
-  <div class="results-block">
-    <%= bootstrap_flash %>
+  <div class="row">
+    <div class="col-sm-5">
+      <%= bootstrap_flash %>
+    </div>
   </div>
 <% end %>
 <% if @users %>
@@ -14,8 +16,8 @@
             <td><strong>Email: </strong><%= user.email %></td>
             <td><strong>Profile: </strong><%= link_to "View Profile", user_path(user), class: "btn btn-xs btn-success" %></td>
             <% if current_user.not_friends_with(user.id) %>
-              <%= link_to "Add friend", add_friend_path(user: current_user, friend: user),
-                        class: "btn btn-xs btn-success", method: :post %>
+              <td><%= link_to "Add friend", add_friend_path(user: current_user, friend: user),
+                        class: "btn btn-xs btn-success", method: :post %> </td>
              <% end %>
           </tr>
           <% end %>
